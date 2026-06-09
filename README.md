@@ -179,6 +179,23 @@ Planned improvements include:
 - risk dashboard
 - integration with AI agent workflows
 
+## Skills Demonstrated
+
+This project demonstrates practical skills at the intersection of law, technology and business operations:
+
+- Legal risk structuring
+- IP and R&D contract risk analysis
+- AI governance awareness
+- Python programming fundamentals
+- Modular software architecture
+- Rule-based decision logic
+- Risk scoring and prioritization
+- Markdown report generation
+- Git and GitHub version control
+- Legal Operations workflow design
+
+The project reflects an ability to translate legal reasoning into structured technical workflows, which is essential for developing AI-assisted legal tools and future legal agent systems.
+
 ## Legal Disclaimer
 
 This project is for educational and internal workflow prototyping purposes only. It does not constitute formal legal advice and should not be used as a substitute for review by a qualified legal professional.
