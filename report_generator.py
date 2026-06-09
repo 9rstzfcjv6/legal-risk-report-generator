@@ -92,6 +92,26 @@ def generate_batch_summary_report(batch_results):
     report += f"- **Highest risk score:** {highest_risk_score}\n"
     report += f"- **Contracts requiring legal escalation:** {len(escalation_contracts)}\n\n"
 
+    report += "## Priority Recommendation\n\n"
+
+    if highest_risk_contract:
+        report += (
+            f"Priority should be given to **{highest_risk_contract}** because it has "
+            f"the highest risk score in the reviewed contract batch "
+            f"(**{highest_risk_score}** points). This contract should be reviewed first "
+            f"by the legal or IP team before lower-risk contracts.\n\n"
+        )
+    else:
+        report += "No priority recommendation available because no contract was analyzed.\n\n"
+
+    report += "## Ranking Logic\n\n"
+    report += (
+        "Contracts are ranked based on their total risk score. "
+        "High risks count for 3 points, medium risks count for 2 points, "
+        "and low risks count for 1 point. Contracts with at least one high-risk issue "
+        "should generally be escalated for legal review before signature.\n\n"
+    )
+
     report += "## Contract Risk Overview\n\n"
     report += "| Contract | High | Medium | Low | Total Risks | Risk Score | Overall Assessment |\n"
     report += "|---|---:|---:|---:|---:|---:|---|\n"
