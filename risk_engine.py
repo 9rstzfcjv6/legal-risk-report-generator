@@ -112,7 +112,7 @@ def generate_portfolio_action_plan(batch_results):
             })
     for owner in action_plan:
         action_plan[owner] = sort_actions_by_priority(action_plan[owner])
-        
+
     return action_plan
 
 def sort_actions_by_priority(actions):
@@ -126,3 +126,33 @@ def sort_actions_by_priority(actions):
         actions,
         key=lambda action: priority_order.get(action["priority"], 99)
     )
+
+def generate_contract_playbook_recommendations(category_counts):
+    recommendations = []
+
+    if category_counts.get("Intellectual Property", 0) > 0:
+        recommendations.append(
+            "Add a standard foreground IP ownership clause to R&D collaboration agreements, clearly distinguishing background IP, foreground IP and jointly developed results."
+        )
+
+    if category_counts.get("Confidentiality", 0) > 0:
+        recommendations.append(
+            "Add a standard confidentiality survival clause specifying that confidentiality obligations continue after termination or expiration of the agreement."
+        )
+
+    if category_counts.get("AI / Data Governance", 0) > 0:
+        recommendations.append(
+            "Add a standard AI training-use restriction clause prohibiting the use of confidential information, technical data or R&D outputs for model training without prior written consent."
+        )
+
+    if category_counts.get("R&D Governance", 0) > 0:
+        recommendations.append(
+            "Add a standard publication approval clause requiring prior written approval before publication or disclosure of research results."
+        )
+
+    if not recommendations:
+        recommendations.append(
+            "No contract playbook recommendation was generated because no recurring risk category was detected."
+        )
+
+    return recommendations

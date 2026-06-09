@@ -32,6 +32,13 @@ Contracts are ranked based on their total risk score. High risks count for 3 poi
 - AI / Data Governance risks appear in the reviewed contract batch. This suggests that restrictions on AI training use, model improvement and secondary use of technical data should be added to the contract review playbook.
 - R&D Governance risks appear in the reviewed contract batch. This suggests that publication approval, research disclosure and project governance clauses should be standardized before project launch.
 
+## Contract Playbook Recommendations
+
+- Add a standard foreground IP ownership clause to R&D collaboration agreements, clearly distinguishing background IP, foreground IP and jointly developed results.
+- Add a standard confidentiality survival clause specifying that confidentiality obligations continue after termination or expiration of the agreement.
+- Add a standard AI training-use restriction clause prohibiting the use of confidential information, technical data or R&D outputs for model training without prior written consent.
+- Add a standard publication approval clause requiring prior written approval before publication or disclosure of research results.
+
 ## Portfolio Action Plan
 
 ### IP / Legal Team

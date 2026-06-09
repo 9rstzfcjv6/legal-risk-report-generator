@@ -4,7 +4,8 @@ from risk_engine import (
     get_action_for_risk,
     get_overall_assessment,
     generate_category_insights,
-    generate_portfolio_action_plan
+    generate_portfolio_action_plan,
+    generate_contract_playbook_recommendations
 )
 
 
@@ -136,6 +137,15 @@ def generate_batch_summary_report(batch_results):
 
     for insight in category_insights:
         report += f"- {insight}\n"
+
+    report += "\n"
+
+    playbook_recommendations = generate_contract_playbook_recommendations(global_category_counts)
+
+    report += "## Contract Playbook Recommendations\n\n"
+
+    for recommendation in playbook_recommendations:
+        report += f"- {recommendation}\n"
 
     report += "\n"
 
