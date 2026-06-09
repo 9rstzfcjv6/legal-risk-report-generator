@@ -1,0 +1,7 @@
+The parties agree to collaborate on the development of medical AI technology.
+
+Any foreground IP developed during the project may be jointly owned by the parties.
+
+Confidential technical data may be used for machine learning model improvement.
+
+The research partner may publish project results after completion.
