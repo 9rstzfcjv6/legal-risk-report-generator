@@ -87,7 +87,15 @@ def build_overview_table(batch_results):
             "Assessment": result["overall_assessment"]
         })
 
-    return pd.DataFrame(rows)
+    overview_df = pd.DataFrame(rows)
+
+    if overview_df.empty:
+        return overview_df
+
+    return overview_df.sort_values(
+        by="Risk Score",
+        ascending=False
+    ).reset_index(drop=True)
 
 
 def get_highest_risk_contract(batch_results):
