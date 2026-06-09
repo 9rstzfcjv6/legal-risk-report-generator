@@ -154,7 +154,8 @@ Outputs/batch_summary_report.md
 ├── inputs/
 │   ├── sample_contract.txt
 │   ├── supplier_agreement.txt
-│   └── university_collaboration.txt
+│   ├── university_collaboration.txt
+    └── medtech_ai_supplier_agreement.txt
 ├── Outputs/
 │   ├── sample_contract_report.md
 │   ├── supplier_agreement_report.md

@@ -1,0 +1,19 @@
+MedTech AI Supplier Agreement
+
+This agreement is entered into between BioVision Medical Technologies Ltd. and DataSense AI Solutions Ltd. for the development and supply of AI-assisted diagnostic software components.
+
+The supplier will provide machine learning support services, software integration assistance and technical documentation related to medical imaging analytics.
+
+The parties may exchange confidential technical information, product specifications, prototype documentation, patient-related metadata, anonymized datasets, algorithmic performance reports and research outputs.
+
+The agreement states that each party retains ownership of its pre-existing intellectual property. However, the agreement does not clearly define ownership of foreground IP, jointly developed improvements, model fine-tuning outputs or derivative works created during the collaboration.
+
+The supplier may use technical documentation, software logs, anonymized datasets and performance feedback to improve its internal models and machine learning systems.
+
+The agreement includes confidentiality obligations during the term of the project, but does not specify whether confidentiality obligations survive termination or expiration of the agreement.
+
+The agreement allows the supplier to reference the collaboration in technical materials and case studies, but does not require prior written approval before publication or disclosure of project results.
+
+The supplier must comply with applicable laws and industry standards, but the agreement does not provide a detailed data governance framework for AI training, data retention, access control, audit rights or restrictions on secondary use of technical data.
+
+The project will involve collaboration between legal, R&D, data governance and product teams.
