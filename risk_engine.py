@@ -56,3 +56,37 @@ def calculate_category_counts(risks):
         category_counts[category] = category_counts[category] + 1
 
     return category_counts
+
+def generate_category_insights(category_counts):
+    insights = []
+
+    if category_counts.get("Intellectual Property", 0) > 0:
+        insights.append(
+            "Intellectual Property risks appear in the reviewed contract batch. "
+            "This suggests that ownership of foreground IP, background IP and jointly developed results should be clarified and standardized in R&D agreements."
+        )
+
+    if category_counts.get("Confidentiality", 0) > 0:
+        insights.append(
+            "Confidentiality risks appear in the reviewed contract batch. "
+            "This suggests that confidentiality survival periods and post-termination obligations should be reviewed systematically."
+        )
+
+    if category_counts.get("AI / Data Governance", 0) > 0:
+        insights.append(
+            "AI / Data Governance risks appear in the reviewed contract batch. "
+            "This suggests that restrictions on AI training use, model improvement and secondary use of technical data should be added to the contract review playbook."
+        )
+
+    if category_counts.get("R&D Governance", 0) > 0:
+        insights.append(
+            "R&D Governance risks appear in the reviewed contract batch. "
+            "This suggests that publication approval, research disclosure and project governance clauses should be standardized before project launch."
+        )
+
+    if not insights:
+        insights.append(
+            "No recurring strategic risk category was identified in the reviewed contract batch."
+        )
+
+    return insights

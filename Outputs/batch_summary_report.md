@@ -20,6 +20,13 @@ Contracts are ranked based on their total risk score. High risks count for 3 poi
 
 | Category | Total Risks |
 |---|---:|
+## Strategic Category Insights
+
+- Intellectual Property risks appear in the reviewed contract batch. This suggests that ownership of foreground IP, background IP and jointly developed results should be clarified and standardized in R&D agreements.
+- Confidentiality risks appear in the reviewed contract batch. This suggests that confidentiality survival periods and post-termination obligations should be reviewed systematically.
+- AI / Data Governance risks appear in the reviewed contract batch. This suggests that restrictions on AI training use, model improvement and secondary use of technical data should be added to the contract review playbook.
+- R&D Governance risks appear in the reviewed contract batch. This suggests that publication approval, research disclosure and project governance clauses should be standardized before project launch.
+
 | Intellectual Property | 3 |
 | Confidentiality | 3 |
 | AI / Data Governance | 2 |

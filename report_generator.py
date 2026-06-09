@@ -2,7 +2,8 @@ from risk_engine import (
     calculate_risk_counts,
     calculate_risk_score,
     get_action_for_risk,
-    get_overall_assessment
+    get_overall_assessment,
+    generate_category_insights
 )
 
 
@@ -122,6 +123,15 @@ def generate_batch_summary_report(batch_results):
     report += "## Risk Category Summary\n\n"
     report += "| Category | Total Risks |\n"
     report += "|---|---:|\n"
+
+    category_insights = generate_category_insights(global_category_counts)
+
+    report += "## Strategic Category Insights\n\n"
+
+    for insight in category_insights:
+        report += f"- {insight}\n"
+
+    report += "\n"
 
     for category, count in global_category_counts.items():
         report += f"| {category} | {count} |\n"
