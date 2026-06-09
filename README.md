@@ -1,4 +1,8 @@
-# Legal Risk Report Generator v2.0
+# Legal Risk Report Generator
+
+Version: `v3.1`
+
+Status: Rule-based LegalTech prototype with batch contract review, risk scoring, strategic insights, portfolio action planning and contract playbook recommendations.
 
 ## Overview
 
