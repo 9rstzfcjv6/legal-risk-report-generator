@@ -115,6 +115,19 @@ Example risks include:
 - unrestricted AI training use of confidential or technical data
 - missing publication approval clause
 
+## Example Output
+
+The tool generates a structured Markdown report including an executive summary, risk matrix, detailed recommendations and legal disclaimer.
+
+Example executive summary:
+
+```text
+High risks: 2
+Medium risks: 2
+Low risks: 0
+Total risk score: 10
+Overall assessment: High-risk contract. Legal escalation required.
+
 ## Current Version
 
 Version: `v2.0`
