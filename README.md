@@ -121,6 +121,37 @@ Version: `v2.0`
 
 Status: Prototype
 
+## Roadmap Toward an AI Legal Agent
+
+This project is currently a structured rule-based legal risk report generator. The next strategic step is to evolve it into an AI-assisted legal review workflow.
+
+The long-term vision is to build a tool where a legal or IP officer can upload a contract and receive a structured risk report generated from the document content.
+
+Planned evolution:
+
+1. **Text input version**  
+   Allow users to paste contract excerpts directly into the tool.
+
+2. **Contract file input**  
+   Add support for uploading `.txt`, `.docx` and `.pdf` contracts.
+
+3. **Clause extraction**  
+   Automatically identify clauses related to intellectual property, confidentiality, publication rights, data use and AI training.
+
+4. **AI-assisted risk detection**  
+   Use a language model to detect potential legal risks and convert them into structured risk entries.
+
+5. **Human-in-the-loop review**  
+   Keep legal professionals in control by requiring human validation before finalizing the report.
+
+6. **Report export**  
+   Generate Markdown, Word or PDF reports for internal legal workflows.
+
+7. **Legal AI Agent prototype**  
+   Build a semi-autonomous legal assistant capable of reviewing contract sections, classifying risks, suggesting actions and producing a structured report.
+
+This roadmap reflects a gradual transition from a rule-based LegalTech prototype to an AI-assisted legal workflow tool.
+
 ## Future Improvements
 
 Planned improvements include:
