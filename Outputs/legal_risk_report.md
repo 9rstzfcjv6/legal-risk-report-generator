@@ -17,51 +17,51 @@
 
 | Risk | Category | Level | Owner | Deadline | Priority | Status |
 |---|---|---|---|---|---|---|
-| Unclear ownership of foreground IP | Intellectual Property | High | IP / Legal Team | Before signature | Urgent | To review |
-| No confidentiality survival period | Confidentiality | Medium | Legal Team | Before negotiation closing | Important | To clarify |
-| No restriction on AI training use | AI / Data Governance | High | Legal / Data Governance Team | Before sharing technical data | Urgent | To review |
-| Missing publication approval clause | R&D Governance | Medium | R&D / Legal Team | Before project launch | Important | To clarify |
+| Potential ambiguity in foreground IP ownership | Intellectual Property | High | IP / Legal Team | Before signature | Urgent | To review |
+| Potential missing confidentiality survival period | Confidentiality | Medium | Legal Team | Before negotiation closing | Important | To clarify |
+| Potential unrestricted AI training use | AI / Data Governance | High | Legal / Data Governance Team | Before sharing technical data | Urgent | To review |
+| Potential missing publication approval clause | R&D Governance | Medium | R&D / Legal Team | Before project launch | Important | To clarify |
 
 ## Detailed Recommendations
 
-### Unclear ownership of foreground IP
+### Potential ambiguity in foreground IP ownership
 
 - **Category:** Intellectual Property
 - **Level:** High
-- **Recommendation:** Clarify whether foreground IP belongs to the company, the research partner, or is jointly owned.
+- **Recommendation:** Clarify ownership of foreground IP, background IP and jointly developed results.
 - **Action:** Escalate to legal team before signature.
 - **Owner:** IP / Legal Team
 - **Deadline:** Before signature
 - **Priority:** Urgent
 - **Status:** To review
 
-### No confidentiality survival period
+### Potential missing confidentiality survival period
 
 - **Category:** Confidentiality
 - **Level:** Medium
-- **Recommendation:** Add a survival period for confidentiality obligations after contract termination.
+- **Recommendation:** Add a survival clause specifying that confidentiality obligations continue after termination.
 - **Action:** Negotiate clause clarification.
 - **Owner:** Legal Team
 - **Deadline:** Before negotiation closing
 - **Priority:** Important
 - **Status:** To clarify
 
-### No restriction on AI training use
+### Potential unrestricted AI training use
 
 - **Category:** AI / Data Governance
 - **Level:** High
-- **Recommendation:** Prohibit the use of confidential information, technical data, or R&D outputs for AI model training without prior written consent.
+- **Recommendation:** Prohibit use of confidential information, technical data or R&D outputs for AI model training without prior written consent.
 - **Action:** Escalate to legal team before signature.
 - **Owner:** Legal / Data Governance Team
 - **Deadline:** Before sharing technical data
 - **Priority:** Urgent
 - **Status:** To review
 
-### Missing publication approval clause
+### Potential missing publication approval clause
 
 - **Category:** R&D Governance
 - **Level:** Medium
-- **Recommendation:** Require prior written approval before any publication or disclosure of research results.
+- **Recommendation:** Require prior written approval before publication or disclosure of research results.
 - **Action:** Negotiate clause clarification.
 - **Owner:** R&D / Legal Team
 - **Deadline:** Before project launch
