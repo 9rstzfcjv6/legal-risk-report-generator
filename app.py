@@ -186,12 +186,12 @@ else:
 
             st.success("Uploaded contract analysis completed.")
 
-
 if batch_results:
     total_contracts = len(batch_results)
     total_risks = sum(result["risk_count"] for result in batch_results)
     total_high_risks = sum(result["high_count"] for result in batch_results)
     highest_risk_contract = get_highest_risk_contract(batch_results)
+    highest_risk_score = max(result["risk_score"] for result in batch_results)
 
     st.subheader("2. Portfolio Risk Dashboard")
 
@@ -200,7 +200,9 @@ if batch_results:
     col1.metric("Contracts analyzed", total_contracts)
     col2.metric("Total risks detected", total_risks)
     col3.metric("High-risk issues", total_high_risks)
-    col4.metric("Highest-risk contract", highest_risk_contract)
+    col4.metric("Highest risk score", highest_risk_score)
+
+    st.caption(f"Highest-risk contract: {highest_risk_contract}")
 
     overview_df = build_overview_table(batch_results)
 
@@ -227,7 +229,7 @@ if batch_results:
                 mime="text/markdown"
             )
 
-    st.subheader("4. Batch Summary Report")
+    st.subheader("4. Portfolio Summary")
 
     batch_summary = generate_batch_summary_report(batch_results)
 
