@@ -46,6 +46,8 @@ Status: Streamlit-based LegalTech prototype with file upload, batch contract rev
 
 The project includes a Streamlit web interface for browser-based contract risk analysis.
 
+![Streamlit dashboard screenshot](assets/streamlit_dashboard.png)
+
 Users can:
 
 - select existing `.txt` contracts from the `inputs/` folder;
