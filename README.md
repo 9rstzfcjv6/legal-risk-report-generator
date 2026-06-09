@@ -1,8 +1,10 @@
 # Legal Risk Report Generator
 
-Version: `v3.1`
+## Current Version
 
-Status: Rule-based LegalTech prototype with batch contract review, risk scoring, strategic insights, portfolio action planning and contract playbook recommendations.
+Version: `v3.2`
+
+Status: Streamlit-based LegalTech prototype with file upload, batch contract review, risk scoring, strategic insights, portfolio action planning and contract playbook recommendations.
 
 ## Overview
 
@@ -11,6 +13,25 @@ Legal Risk Report Generator v2.0 is a modular Python prototype designed to gener
 The project focuses on risks commonly found in R&D collaboration agreements, including intellectual property ownership, confidentiality, AI training use, and publication approval.
 
 This tool is part of a broader Legal AI Builder learning path focused on legal automation, AI governance, IP risk management and Legal Operations.
+
+## Streamlit Demo
+
+The project includes a Streamlit web interface that allows users to analyze contract files through a local browser-based application.
+
+Users can:
+
+- Select existing `.txt` contracts from the `inputs/` folder
+- Upload new `.txt` contract files directly through the interface
+- Run automated legal risk analysis
+- View a portfolio-level risk dashboard
+- Review individual contract reports
+- Generate a batch summary report
+- Download reports in Markdown format
+
+To launch the interface:
+
+```bash
+streamlit run app.py
 
 ## Strategic Purpose
 
@@ -44,29 +65,44 @@ In a technology or MedTech environment, this type of workflow can be particularl
 
 ## Features
 
-- Structured contract information
-- Legal risk database
-- Risk classification by category
-- Risk level assessment
-- Weighted risk scoring
-- Automatic overall assessment
-- Recommended action per risk
-- Owner, deadline, priority and status tracking
-- Markdown report generation
-- Modular Python architecture
+## Features
+
+- Multiple contract file analysis
+- File upload interface for `.txt` contracts
+- Existing file selection from the `inputs/` folder
+- Streamlit web interface
+- Batch summary report
+- Contract risk ranking
+- Priority recommendation
+- Risk category summary
+- Strategic category insights
+- Portfolio action plan by owner
+- Priority-sorted action items
+- Contract playbook recommendations
+- Downloadable Markdown reports
 
 ## Project Structure
 
-```text
 02_legal_risk_report_generator/
+├── app.py
 ├── main.py
 ├── data.py
+├── file_reader.py
+├── input_analyzer.py
 ├── risk_engine.py
 ├── report_generator.py
 ├── export.py
-└── outputs/
-    └── legal_risk_report.md
-```
+├── inputs/
+│   ├── sample_contract.txt
+│   ├── supplier_agreement.txt
+│   └── university_collaboration.txt
+├── Outputs/
+│   ├── sample_contract_report.md
+│   ├── supplier_agreement_report.md
+│   ├── university_collaboration_report.md
+│   └── batch_summary_report.md
+├── README.md
+└── .gitignore
 
 ## File Roles
 
@@ -96,16 +132,57 @@ Stores generated reports.
 
 ## How to Run
 
+## How to Run
+
+## How to Run
+
+The project can be used in two ways:
+
+- **Streamlit web app** — recommended for demos and user testing.
+- **Command-line version** — useful for development and batch generation.
+
+### Prerequisites
+
+Make sure Python is installed:
+
+```bash
+python3 --version
+```
+
+Install the required packages:
+
+```bash
+python3 -m pip install streamlit pandas
+```
+
+### Option 1 — Streamlit Web App
+
 From the project folder, run:
 
 ```bash
-python3 main.py
+streamlit run app.py
 ```
 
-The generated report will be saved as:
+If needed, use:
+
+```bash
+python3 -m streamlit run app.py
+```
+
+Then open the local URL shown in the terminal, usually:
 
 ```text
-outputs/legal_risk_report.md
+http://localhost:8501
+```
+
+The Streamlit interface lets users select existing `.txt` files, upload new `.txt` contracts, view the risk dashboard and download Markdown reports.
+
+### Option 2 — Command-Line Version
+
+To analyze `.txt` files stored in the `inputs/` folder and generate reports in `Outputs/`, run:
+
+```bash
+python3 main.py
 ```
 
 ## Example Use Case
