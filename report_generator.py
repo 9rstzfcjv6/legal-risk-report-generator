@@ -3,7 +3,8 @@ from risk_engine import (
     calculate_risk_score,
     get_action_for_risk,
     get_overall_assessment,
-    generate_category_insights
+    generate_category_insights,
+    generate_portfolio_action_plan
 )
 
 
@@ -132,6 +133,24 @@ def generate_batch_summary_report(batch_results):
         report += f"- {insight}\n"
 
     report += "\n"
+    
+    portfolio_action_plan = generate_portfolio_action_plan(batch_results)
+
+    report += "## Portfolio Action Plan\n\n"
+
+    for owner, actions in portfolio_action_plan.items():
+        report += f"### {owner}\n\n"
+
+        for action in actions:
+            report += (
+                f"- **Contract:** {action['contract']} | "
+                f"**Risk:** {action['risk']} | "
+                f"**Priority:** {action['priority']} | "
+                f"**Deadline:** {action['deadline']} | "
+                f"**Status:** {action['status']}\n"
+            )
+
+        report += "\n"
 
     for category, count in global_category_counts.items():
         report += f"| {category} | {count} |\n"

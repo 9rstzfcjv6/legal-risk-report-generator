@@ -27,6 +27,30 @@ Contracts are ranked based on their total risk score. High risks count for 3 poi
 - AI / Data Governance risks appear in the reviewed contract batch. This suggests that restrictions on AI training use, model improvement and secondary use of technical data should be added to the contract review playbook.
 - R&D Governance risks appear in the reviewed contract batch. This suggests that publication approval, research disclosure and project governance clauses should be standardized before project launch.
 
+## Portfolio Action Plan
+
+### IP / Legal Team
+
+- **Contract:** sample_contract.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Priority:** Urgent | **Deadline:** Before signature | **Status:** To review
+- **Contract:** supplier_agreement.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Priority:** Urgent | **Deadline:** Before signature | **Status:** To review
+- **Contract:** university_collaboration.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Priority:** Urgent | **Deadline:** Before signature | **Status:** To review
+
+### Legal Team
+
+- **Contract:** sample_contract.txt | **Risk:** Potential missing confidentiality survival period | **Priority:** Important | **Deadline:** Before negotiation closing | **Status:** To clarify
+- **Contract:** supplier_agreement.txt | **Risk:** Potential missing confidentiality survival period | **Priority:** Important | **Deadline:** Before negotiation closing | **Status:** To clarify
+- **Contract:** university_collaboration.txt | **Risk:** Potential missing confidentiality survival period | **Priority:** Important | **Deadline:** Before negotiation closing | **Status:** To clarify
+
+### Legal / Data Governance Team
+
+- **Contract:** sample_contract.txt | **Risk:** Potential unrestricted AI training use | **Priority:** Urgent | **Deadline:** Before sharing technical data | **Status:** To review
+- **Contract:** supplier_agreement.txt | **Risk:** Potential unrestricted AI training use | **Priority:** Urgent | **Deadline:** Before sharing technical data | **Status:** To review
+
+### R&D / Legal Team
+
+- **Contract:** sample_contract.txt | **Risk:** Potential missing publication approval clause | **Priority:** Important | **Deadline:** Before project launch | **Status:** To clarify
+- **Contract:** university_collaboration.txt | **Risk:** Potential missing publication approval clause | **Priority:** Important | **Deadline:** Before project launch | **Status:** To clarify
+
 | Intellectual Property | 3 |
 | Confidentiality | 3 |
 | AI / Data Governance | 2 |

@@ -90,3 +90,25 @@ def generate_category_insights(category_counts):
         )
 
     return insights
+
+def generate_portfolio_action_plan(batch_results):
+    action_plan = {}
+
+    for result in batch_results:
+        file_name = result["file_name"]
+
+        for risk in result["risks"]:
+            owner = risk["owner"]
+
+            if owner not in action_plan:
+                action_plan[owner] = []
+
+            action_plan[owner].append({
+                "contract": file_name,
+                "risk": risk["name"],
+                "priority": risk["priority"],
+                "deadline": risk["deadline"],
+                "status": risk["status"]
+            })
+
+    return action_plan
