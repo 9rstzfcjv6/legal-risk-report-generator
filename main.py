@@ -2,7 +2,12 @@ from data import document
 from file_reader import read_contract_file, get_text_files
 from input_analyzer import analyze_contract_text
 from report_generator import generate_markdown_report, generate_batch_summary_report
-from risk_engine import calculate_risk_counts, calculate_risk_score, get_overall_assessment
+from risk_engine import (
+    calculate_risk_counts,
+    calculate_risk_score,
+    get_overall_assessment,
+    calculate_category_counts
+)
 from export import save_markdown_report
 
 
@@ -16,7 +21,7 @@ def main():
     input_files = get_text_files(input_folder)
     batch_results = []
 
-    print("Legal Risk Report Generator v2.6")
+    print("Legal Risk Report Generator v2.7")
     print("--------------------------------")
     print("Input files found:", len(input_files))
     print("")
@@ -31,6 +36,7 @@ def main():
         high_count, medium_count, low_count = calculate_risk_counts(risks)
         risk_score = calculate_risk_score(risks)
         overall_assessment = get_overall_assessment(high_count, medium_count)
+        category_counts = calculate_category_counts(risks)
 
         report = generate_markdown_report(document, risks)
         save_markdown_report(report, output_path)
@@ -42,7 +48,8 @@ def main():
             "medium_count": medium_count,
             "low_count": low_count,
             "risk_score": risk_score,
-            "overall_assessment": overall_assessment
+            "overall_assessment": overall_assessment,
+            "category_counts": category_counts
         })
 
         print("Analyzed:", input_file)

@@ -70,6 +70,7 @@ def generate_batch_summary_report(batch_results):
     escalation_contracts = []
     highest_risk_contract = None
     highest_risk_score = -1
+    global_category_counts = {}
 
     report = ""
 
@@ -79,6 +80,12 @@ def generate_batch_summary_report(batch_results):
 
     for result in batch_results:
         total_risks += result["risk_count"]
+
+        for category, count in result["category_counts"].items():
+            if category not in global_category_counts:
+                global_category_counts[category] = 0
+
+            global_category_counts[category] += count
 
         if result["risk_score"] > highest_risk_score:
             highest_risk_score = result["risk_score"]
@@ -111,6 +118,15 @@ def generate_batch_summary_report(batch_results):
         "and low risks count for 1 point. Contracts with at least one high-risk issue "
         "should generally be escalated for legal review before signature.\n\n"
     )
+
+    report += "## Risk Category Summary\n\n"
+    report += "| Category | Total Risks |\n"
+    report += "|---|---:|\n"
+
+    for category, count in global_category_counts.items():
+        report += f"| {category} | {count} |\n"
+
+    report += "\n"
 
     report += "## Contract Risk Overview\n\n"
     report += "| Contract | High | Medium | Low | Total Risks | Risk Score | Overall Assessment |\n"

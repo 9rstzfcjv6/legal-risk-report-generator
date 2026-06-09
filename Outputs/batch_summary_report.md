@@ -16,6 +16,15 @@ Priority should be given to **sample_contract.txt** because it has the highest r
 
 Contracts are ranked based on their total risk score. High risks count for 3 points, medium risks count for 2 points, and low risks count for 1 point. Contracts with at least one high-risk issue should generally be escalated for legal review before signature.
 
+## Risk Category Summary
+
+| Category | Total Risks |
+|---|---:|
+| Intellectual Property | 3 |
+| Confidentiality | 3 |
+| AI / Data Governance | 2 |
+| R&D Governance | 2 |
+
 ## Contract Risk Overview
 
 | Contract | High | Medium | Low | Total Risks | Risk Score | Overall Assessment |

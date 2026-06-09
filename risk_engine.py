@@ -44,3 +44,15 @@ def get_overall_assessment(high_count, medium_count):
         return "Medium-risk contract. Negotiation recommended."
     else:
         return "Low-risk contract. Standard review sufficient."
+def calculate_category_counts(risks):
+    category_counts = {}
+
+    for risk in risks:
+        category = risk["category"]
+
+        if category not in category_counts:
+            category_counts[category] = 0
+
+        category_counts[category] = category_counts[category] + 1
+
+    return category_counts
