@@ -125,6 +125,11 @@ def generate_batch_summary_report(batch_results):
     report += "| Category | Total Risks |\n"
     report += "|---|---:|\n"
 
+    for category, count in global_category_counts.items():
+        report += f"| {category} | {count} |\n"
+
+    report += "\n"
+
     category_insights = generate_category_insights(global_category_counts)
 
     report += "## Strategic Category Insights\n\n"
@@ -133,7 +138,7 @@ def generate_batch_summary_report(batch_results):
         report += f"- {insight}\n"
 
     report += "\n"
-    
+
     portfolio_action_plan = generate_portfolio_action_plan(batch_results)
 
     report += "## Portfolio Action Plan\n\n"
@@ -141,11 +146,11 @@ def generate_batch_summary_report(batch_results):
     for owner, actions in portfolio_action_plan.items():
         report += f"### {owner}\n\n"
 
-        for action in actions:
+        for index, action in enumerate(actions, start=1):
             report += (
-                f"- **Contract:** {action['contract']} | "
+                f"{index}. **Priority:** {action['priority']} | "
+                f"**Contract:** {action['contract']} | "
                 f"**Risk:** {action['risk']} | "
-                f"**Priority:** {action['priority']} | "
                 f"**Deadline:** {action['deadline']} | "
                 f"**Status:** {action['status']}\n"
             )

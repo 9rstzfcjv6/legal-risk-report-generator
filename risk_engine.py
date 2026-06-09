@@ -110,5 +110,19 @@ def generate_portfolio_action_plan(batch_results):
                 "deadline": risk["deadline"],
                 "status": risk["status"]
             })
-
+    for owner in action_plan:
+        action_plan[owner] = sort_actions_by_priority(action_plan[owner])
+        
     return action_plan
+
+def sort_actions_by_priority(actions):
+    priority_order = {
+        "Urgent": 1,
+        "Important": 2,
+        "Standard": 3
+    }
+
+    return sorted(
+        actions,
+        key=lambda action: priority_order.get(action["priority"], 99)
+    )

@@ -20,6 +20,11 @@ Contracts are ranked based on their total risk score. High risks count for 3 poi
 
 | Category | Total Risks |
 |---|---:|
+| Intellectual Property | 3 |
+| Confidentiality | 3 |
+| AI / Data Governance | 2 |
+| R&D Governance | 2 |
+
 ## Strategic Category Insights
 
 - Intellectual Property risks appear in the reviewed contract batch. This suggests that ownership of foreground IP, background IP and jointly developed results should be clarified and standardized in R&D agreements.
@@ -31,25 +36,25 @@ Contracts are ranked based on their total risk score. High risks count for 3 poi
 
 ### IP / Legal Team
 
-- **Contract:** sample_contract.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Priority:** Urgent | **Deadline:** Before signature | **Status:** To review
-- **Contract:** supplier_agreement.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Priority:** Urgent | **Deadline:** Before signature | **Status:** To review
-- **Contract:** university_collaboration.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Priority:** Urgent | **Deadline:** Before signature | **Status:** To review
+1. **Priority:** Urgent | **Contract:** sample_contract.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Deadline:** Before signature | **Status:** To review
+2. **Priority:** Urgent | **Contract:** supplier_agreement.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Deadline:** Before signature | **Status:** To review
+3. **Priority:** Urgent | **Contract:** university_collaboration.txt | **Risk:** Potential ambiguity in foreground IP ownership | **Deadline:** Before signature | **Status:** To review
 
 ### Legal Team
 
-- **Contract:** sample_contract.txt | **Risk:** Potential missing confidentiality survival period | **Priority:** Important | **Deadline:** Before negotiation closing | **Status:** To clarify
-- **Contract:** supplier_agreement.txt | **Risk:** Potential missing confidentiality survival period | **Priority:** Important | **Deadline:** Before negotiation closing | **Status:** To clarify
-- **Contract:** university_collaboration.txt | **Risk:** Potential missing confidentiality survival period | **Priority:** Important | **Deadline:** Before negotiation closing | **Status:** To clarify
+1. **Priority:** Important | **Contract:** sample_contract.txt | **Risk:** Potential missing confidentiality survival period | **Deadline:** Before negotiation closing | **Status:** To clarify
+2. **Priority:** Important | **Contract:** supplier_agreement.txt | **Risk:** Potential missing confidentiality survival period | **Deadline:** Before negotiation closing | **Status:** To clarify
+3. **Priority:** Important | **Contract:** university_collaboration.txt | **Risk:** Potential missing confidentiality survival period | **Deadline:** Before negotiation closing | **Status:** To clarify
 
 ### Legal / Data Governance Team
 
-- **Contract:** sample_contract.txt | **Risk:** Potential unrestricted AI training use | **Priority:** Urgent | **Deadline:** Before sharing technical data | **Status:** To review
-- **Contract:** supplier_agreement.txt | **Risk:** Potential unrestricted AI training use | **Priority:** Urgent | **Deadline:** Before sharing technical data | **Status:** To review
+1. **Priority:** Urgent | **Contract:** sample_contract.txt | **Risk:** Potential unrestricted AI training use | **Deadline:** Before sharing technical data | **Status:** To review
+2. **Priority:** Urgent | **Contract:** supplier_agreement.txt | **Risk:** Potential unrestricted AI training use | **Deadline:** Before sharing technical data | **Status:** To review
 
 ### R&D / Legal Team
 
-- **Contract:** sample_contract.txt | **Risk:** Potential missing publication approval clause | **Priority:** Important | **Deadline:** Before project launch | **Status:** To clarify
-- **Contract:** university_collaboration.txt | **Risk:** Potential missing publication approval clause | **Priority:** Important | **Deadline:** Before project launch | **Status:** To clarify
+1. **Priority:** Important | **Contract:** sample_contract.txt | **Risk:** Potential missing publication approval clause | **Deadline:** Before project launch | **Status:** To clarify
+2. **Priority:** Important | **Contract:** university_collaboration.txt | **Risk:** Potential missing publication approval clause | **Deadline:** Before project launch | **Status:** To clarify
 
 | Intellectual Property | 3 |
 | Confidentiality | 3 |

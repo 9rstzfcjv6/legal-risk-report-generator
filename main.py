@@ -21,7 +21,7 @@ def main():
     input_files = get_text_files(input_folder)
     batch_results = []
 
-    print("Legal Risk Report Generator v2.9")
+    print("Legal Risk Report Generator v3.0")
     print("--------------------------------")
     print("Input files found:", len(input_files))
     print("")
