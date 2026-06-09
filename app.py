@@ -15,7 +15,6 @@ from risk_engine import (
 
 st.set_page_config(
     page_title="Legal Risk Report Generator",
-    page_icon="⚖️",
     layout="wide"
 )
 
@@ -51,6 +50,28 @@ def analyze_selected_contracts(selected_files, input_folder):
 
     return batch_results
 
+def analyze_uploaded_contract(file_name, contract_text):
+    risks = analyze_contract_text(contract_text)
+
+    high_count, medium_count, low_count = calculate_risk_counts(risks)
+    risk_score = calculate_risk_score(risks)
+    overall_assessment = get_overall_assessment(high_count, medium_count)
+    category_counts = calculate_category_counts(risks)
+
+    report = generate_markdown_report(document, risks)
+
+    return {
+        "file_name": file_name,
+        "risk_count": len(risks),
+        "high_count": high_count,
+        "medium_count": medium_count,
+        "low_count": low_count,
+        "risk_score": risk_score,
+        "overall_assessment": overall_assessment,
+        "category_counts": category_counts,
+        "risks": risks,
+        "report": report
+    }
 
 def build_overview_table(batch_results):
     rows = []
@@ -97,7 +118,7 @@ st.sidebar.markdown(
     """
 )
 
-st.title("⚖️ Legal Risk Report Generator")
+st.title("Legal Risk Report Generator")
 st.caption("Rule-based LegalTech prototype for contract risk analysis, IP governance and AI/data risk review.")
 
 st.markdown(
@@ -110,77 +131,111 @@ st.markdown(
 input_folder = "inputs"
 input_files = get_text_files(input_folder)
 
-st.subheader("1. Select Contract Files")
-st.write(f"Detected files in `inputs/`: **{len(input_files)}**")
+st.subheader("1. Choose Input Mode")
 
-if input_files:
-    selected_files = st.multiselect(
-        "Select contracts to analyze:",
-        input_files,
-        default=input_files
+input_mode = st.radio(
+    "How do you want to provide contracts?",
+    ["Use existing files from inputs/", "Upload .txt contract files"]
+)
+
+batch_results = []
+
+if input_mode == "Use existing files from inputs/":
+    input_folder = "inputs"
+    input_files = get_text_files(input_folder)
+
+    st.markdown("### Existing Contract Files")
+    st.write(f"Detected files in `inputs/`: **{len(input_files)}**")
+
+    if input_files:
+        selected_files = st.multiselect(
+            "Select contracts to analyze:",
+            input_files,
+            default=input_files
+        )
+
+        analyze_button = st.button("Analyze selected existing contracts")
+
+        if analyze_button:
+            if not selected_files:
+                st.warning("Please select at least one contract.")
+            else:
+                batch_results = analyze_selected_contracts(selected_files, input_folder)
+                st.success("Analysis completed.")
+
+    else:
+        st.warning("No .txt files found in the inputs folder.")
+
+else:
+    uploaded_files = st.file_uploader(
+        "Upload one or more .txt contract files:",
+        type=["txt"],
+        accept_multiple_files=True
     )
 
-    analyze_button = st.button("Analyze selected contracts")
+    analyze_button = st.button("Analyze uploaded contracts")
 
     if analyze_button:
-        if not selected_files:
-            st.warning("Please select at least one contract.")
+        if not uploaded_files:
+            st.warning("Please upload at least one .txt contract.")
         else:
-            batch_results = analyze_selected_contracts(selected_files, input_folder)
+            for uploaded_file in uploaded_files:
+                contract_text = uploaded_file.read().decode("utf-8")
+                result = analyze_uploaded_contract(uploaded_file.name, contract_text)
+                batch_results.append(result)
 
-            st.success("Analysis completed.")
+            st.success("Uploaded contract analysis completed.")
 
-            total_contracts = len(batch_results)
-            total_risks = sum(result["risk_count"] for result in batch_results)
-            total_high_risks = sum(result["high_count"] for result in batch_results)
-            highest_risk_contract = get_highest_risk_contract(batch_results)
 
-            st.subheader("2. Portfolio Risk Dashboard")
+if batch_results:
+    total_contracts = len(batch_results)
+    total_risks = sum(result["risk_count"] for result in batch_results)
+    total_high_risks = sum(result["high_count"] for result in batch_results)
+    highest_risk_contract = get_highest_risk_contract(batch_results)
 
-            col1, col2, col3, col4 = st.columns(4)
+    st.subheader("2. Portfolio Risk Dashboard")
 
-            col1.metric("Contracts analyzed", total_contracts)
-            col2.metric("Total risks detected", total_risks)
-            col3.metric("High-risk issues", total_high_risks)
-            col4.metric("Highest-risk contract", highest_risk_contract)
+    col1, col2, col3, col4 = st.columns(4)
 
-            overview_df = build_overview_table(batch_results)
+    col1.metric("Contracts analyzed", total_contracts)
+    col2.metric("Total risks detected", total_risks)
+    col3.metric("High-risk issues", total_high_risks)
+    col4.metric("Highest-risk contract", highest_risk_contract)
 
-            st.markdown("### Contract Overview Table")
-            st.dataframe(overview_df, use_container_width=True)
+    overview_df = build_overview_table(batch_results)
 
-            st.subheader("3. Individual Contract Reports")
+    st.markdown("### Contract Overview Table")
+    st.dataframe(overview_df, use_container_width=True)
 
-            for result in batch_results:
-                with st.expander(f"{result['file_name']} — Score: {result['risk_score']}"):
-                    st.write(f"Detected risks: **{result['risk_count']}**")
-                    st.write(f"High risks: **{result['high_count']}**")
-                    st.write(f"Medium risks: **{result['medium_count']}**")
-                    st.write(f"Low risks: **{result['low_count']}**")
-                    st.write(f"Overall assessment: **{result['overall_assessment']}**")
+    st.subheader("3. Individual Contract Reports")
 
-                    st.markdown("### Individual Report")
-                    st.markdown(result["report"])
+    for result in batch_results:
+        with st.expander(f"{result['file_name']} — Score: {result['risk_score']}"):
+            st.write(f"Detected risks: **{result['risk_count']}**")
+            st.write(f"High risks: **{result['high_count']}**")
+            st.write(f"Medium risks: **{result['medium_count']}**")
+            st.write(f"Low risks: **{result['low_count']}**")
+            st.write(f"Overall assessment: **{result['overall_assessment']}**")
 
-                    st.download_button(
-                        label=f"Download {result['file_name']} report",
-                        data=result["report"],
-                        file_name=f"{result['file_name'].replace('.txt', '')}_report.md",
-                        mime="text/markdown"
-                    )
-
-            st.subheader("4. Batch Summary Report")
-
-            batch_summary = generate_batch_summary_report(batch_results)
-
-            st.markdown(batch_summary)
+            st.markdown("### Individual Report")
+            st.markdown(result["report"])
 
             st.download_button(
-                label="Download batch summary report",
-                data=batch_summary,
-                file_name="batch_summary_report.md",
+                label=f"Download {result['file_name']} report",
+                data=result["report"],
+                file_name=f"{result['file_name'].replace('.txt', '')}_report.md",
                 mime="text/markdown"
             )
 
-else:
-    st.warning("No .txt files found in the inputs folder.")
+    st.subheader("4. Batch Summary Report")
+
+    batch_summary = generate_batch_summary_report(batch_results)
+
+    st.markdown(batch_summary)
+
+    st.download_button(
+        label="Download batch summary report",
+        data=batch_summary,
+        file_name="batch_summary_report.md",
+        mime="text/markdown"
+    )
