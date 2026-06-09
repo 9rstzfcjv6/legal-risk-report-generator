@@ -80,6 +80,7 @@ def build_overview_table(batch_results):
         rows.append({
             "Contract": result["file_name"],
             "Risk Score": result["risk_score"],
+            "Risk Level": get_risk_level(result["risk_score"]),
             "Total Risks": result["risk_count"],
             "High": result["high_count"],
             "Medium": result["medium_count"],
@@ -105,6 +106,14 @@ def get_highest_risk_contract(batch_results):
     highest = max(batch_results, key=lambda result: result["risk_score"])
     return highest["file_name"]
 
+def get_risk_level(risk_score):
+    if risk_score >= 7:
+        return "High"
+
+    if risk_score >= 4:
+        return "Medium"
+
+    return "Low"
 
 st.sidebar.title("Legal Risk Report Generator")
 st.sidebar.markdown(
