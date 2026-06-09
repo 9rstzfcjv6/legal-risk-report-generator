@@ -1,0 +1,7 @@
+The supplier will provide technical components for the development of medical AI devices.
+
+The agreement includes confidential information exchanged between the parties.
+
+The supplier may use technical data for model training and internal machine learning optimization.
+
+No specific ownership provision is included for improvements developed during the collaboration.
