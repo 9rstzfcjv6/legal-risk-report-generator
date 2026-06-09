@@ -23,6 +23,21 @@ The tool transforms legal risk analysis into:
 - status monitoring
 - Markdown report generation
 
+## Strategic LegalTech Value
+
+This project is designed to demonstrate how legal, IP and AI governance workflows can be translated into structured software logic.
+
+For legal and IP teams, the value of this type of tool is not only document review, but also workflow standardization. A structured risk report can help teams:
+
+- identify recurring contractual risks
+- prioritize high-risk issues before signature
+- allocate ownership to the right legal, IP, data governance or R&D team
+- create a repeatable review framework
+- improve communication with business and technical stakeholders
+- support early-stage Legal Operations automation
+
+In a technology or MedTech environment, this type of workflow can be particularly useful for R&D collaboration agreements, supplier contracts, NDA review and AI-related data use restrictions.
+
 ## Features
 
 - Structured contract information
