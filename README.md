@@ -74,7 +74,7 @@ python3 --version
 Install the required packages:
 
 ```bash
-python3 -m pip install streamlit pandas
+python3 -m pip install -r requirements.txt
 ```
 
 ### Option 1 — Streamlit Web App
@@ -150,6 +150,7 @@ Outputs/batch_summary_report.md
 ├── risk_engine.py
 ├── report_generator.py
 ├── export.py
+├── requirements.txt
 ├── inputs/
 │   ├── sample_contract.txt
 │   ├── supplier_agreement.txt
