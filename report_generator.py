@@ -62,3 +62,63 @@ def generate_markdown_report(document, risks):
     )
 
     return report
+
+
+def generate_batch_summary_report(batch_results):
+    total_contracts = len(batch_results)
+    total_risks = 0
+    escalation_contracts = []
+    highest_risk_contract = None
+    highest_risk_score = -1
+
+    report = ""
+
+    report += "# Batch Summary Report\n\n"
+    report += "## Executive Summary\n\n"
+    report += f"- **Total contracts reviewed:** {total_contracts}\n"
+
+    for result in batch_results:
+        total_risks += result["risk_count"]
+
+        if result["risk_score"] > highest_risk_score:
+            highest_risk_score = result["risk_score"]
+            highest_risk_contract = result["file_name"]
+
+        if result["high_count"] > 0:
+            escalation_contracts.append(result["file_name"])
+
+    report += f"- **Total risks detected:** {total_risks}\n"
+    report += f"- **Highest-risk contract:** {highest_risk_contract}\n"
+    report += f"- **Highest risk score:** {highest_risk_score}\n"
+    report += f"- **Contracts requiring legal escalation:** {len(escalation_contracts)}\n\n"
+
+    report += "## Contract Risk Overview\n\n"
+    report += "| Contract | High | Medium | Low | Total Risks | Risk Score | Overall Assessment |\n"
+    report += "|---|---:|---:|---:|---:|---:|---|\n"
+
+    for result in batch_results:
+        report += (
+            f"| {result['file_name']} "
+            f"| {result['high_count']} "
+            f"| {result['medium_count']} "
+            f"| {result['low_count']} "
+            f"| {result['risk_count']} "
+            f"| {result['risk_score']} "
+            f"| {result['overall_assessment']} |\n"
+        )
+
+    report += "\n## Contracts Requiring Legal Escalation\n\n"
+
+    if escalation_contracts:
+        for contract in escalation_contracts:
+            report += f"- {contract}\n"
+    else:
+        report += "No contracts require legal escalation.\n"
+
+    report += "\n## Strategic Use\n\n"
+    report += (
+        "This batch summary helps legal, IP and R&D teams prioritize contract review workload, "
+        "identify high-risk agreements and allocate review resources more efficiently.\n"
+    )
+
+    return report
