@@ -167,8 +167,6 @@ def generate_batch_summary_report(batch_results):
 
         report += "\n"
 
-    for category, count in global_category_counts.items():
-        report += f"| {category} | {count} |\n"
 
     report += "\n"
 
