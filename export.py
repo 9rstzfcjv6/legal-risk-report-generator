@@ -54,6 +54,11 @@ def convert_markdown_to_docx_bytes(markdown_text):
             doc.add_paragraph(clean_line.replace("- ", ""), style="List Bullet")
             index += 1
 
+        elif clean_line.startswith("> "):
+             quote_paragraph = doc.add_paragraph(clean_line.replace("> ", ""))
+             quote_paragraph.style = "Intense Quote"
+             index += 1
+
         elif is_markdown_table_line(clean_line):
             table_lines = []
 
