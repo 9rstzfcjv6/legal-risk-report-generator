@@ -20,14 +20,14 @@ The project is especially relevant for technology-driven companies dealing with 
 
 ## Current Version
 
-Version: `v3.2`
+Version: `v3.3`
 
-Status: Streamlit-based LegalTech prototype with file upload, batch contract review, risk scoring, strategic insights, portfolio action planning and contract playbook recommendations.
+Status: Streamlit-based LegalTech prototype with TXT/DOCX file upload, batch contract review, risk scoring, strategic insights, portfolio action planning and contract playbook recommendations.
 
 ## Key Features
 
 - Streamlit web interface
-- File upload interface for `.txt` contracts
+- File upload interface for `.txt and .docx` contracts
 - Existing file selection from the `inputs/` folder
 - Multiple contract file analysis
 - Portfolio risk dashboard
@@ -41,6 +41,7 @@ Status: Streamlit-based LegalTech prototype with file upload, batch contract rev
 - Portfolio action plan by owner
 - Priority-sorted action items
 - Contract playbook recommendations
+- DOCX file upload support
 
 ## Streamlit Demo
 
@@ -50,8 +51,8 @@ The project includes a Streamlit web interface for browser-based contract risk a
 
 Users can:
 
-- select existing `.txt` contracts from the `inputs/` folder;
-- upload new `.txt` contract files directly through the interface;
+- select existing `.txt and .docx` contracts from the `inputs/` folder;
+- upload new `.txt and .docx` contract files directly through the interface;
 - run automated legal risk analysis;
 - view a portfolio-level risk dashboard;
 - review individual contract reports;
@@ -99,11 +100,11 @@ Then open the local URL shown in the terminal, usually:
 http://localhost:8501
 ```
 
-The Streamlit interface lets users select existing `.txt` files, upload new `.txt` contracts, view the risk dashboard and download Markdown reports.
+The Streamlit interface lets users select existing `.txt and .docx` files, upload new `.txt and .docx` contracts, view the risk dashboard and download Markdown reports.
 
 ### Option 2 — Command-Line Version
 
-To analyze `.txt` files stored in the `inputs/` folder and generate reports in `Outputs/`, run:
+To analyze `.txt and .docx` files stored in the `inputs/` folder and generate reports in `Outputs/`, run:
 
 ```bash
 python3 main.py

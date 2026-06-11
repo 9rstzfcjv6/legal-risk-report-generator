@@ -1,8 +1,9 @@
 import streamlit as st
 import pandas as pd
+from docx import Document
 
 from data import document
-from file_reader import read_contract_file, get_text_files
+from file_reader import read_contract_file, get_text_files, read_docx_file
 from input_analyzer import analyze_contract_text
 from report_generator import generate_markdown_report, generate_batch_summary_report
 from risk_engine import (
@@ -73,6 +74,22 @@ def analyze_uploaded_contract(file_name, contract_text):
         "report": report
     }
 
+def read_uploaded_file(uploaded_file):
+    if uploaded_file.name.endswith(".txt"):
+        return uploaded_file.read().decode("utf-8")
+
+    if uploaded_file.name.endswith(".docx"):
+        document = Document(uploaded_file)
+        paragraphs = []
+
+        for paragraph in document.paragraphs:
+            if paragraph.text.strip():
+                paragraphs.append(paragraph.text)
+
+        return "\n".join(paragraphs)
+
+    return ""
+
 def build_overview_table(batch_results):
     rows = []
 
@@ -120,7 +137,7 @@ st.sidebar.markdown(
     """
     **Prototype type:** LegalTech / Legal Ops  
     **Focus:** IP, confidentiality, AI/data governance and R&D risk review  
-    **Version:** v3.1 + Streamlit UX
+    **Version:** v3.3 + DOCX Input Support
     """
 )
 
@@ -152,7 +169,7 @@ st.subheader("1. Choose Input Mode")
 
 input_mode = st.radio(
     "How do you want to provide contracts?",
-    ["Use existing files from inputs/", "Upload .txt contract files"]
+    ["Use existing files from inputs/", "Upload .txt or .docx contract files"]
 )
 
 batch_results = []
@@ -185,10 +202,10 @@ if input_mode == "Use existing files from inputs/":
 
 else:
     uploaded_files = st.file_uploader(
-        "Upload one or more .txt contract files:",
-        type=["txt"],
+        "Upload one or more .txt or .docx contract files:",
+        type=["txt", "docx"],
         accept_multiple_files=True
-    )
+)
 
     analyze_button = st.button("Analyze uploaded contracts")
 
@@ -197,7 +214,7 @@ else:
             st.warning("Please upload at least one .txt contract.")
         else:
             for uploaded_file in uploaded_files:
-                contract_text = uploaded_file.read().decode("utf-8")
+                contract_text = read_uploaded_file(uploaded_file)
                 result = analyze_uploaded_contract(uploaded_file.name, contract_text)
                 batch_results.append(result)
 

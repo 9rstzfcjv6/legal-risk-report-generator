@@ -1,3 +1,4 @@
+from docx import Document
 import os
 
 
@@ -14,3 +15,13 @@ def get_text_files(folder_path):
             files.append(file_name)
 
     return files
+
+def read_docx_file(file_path):
+    doc = Document(file_path)
+    paragraphs = []
+
+    for paragraph in doc.paragraphs:
+        if paragraph.text.strip():
+            paragraphs.append(paragraph.text)
+
+    return "\n".join(paragraphs)
