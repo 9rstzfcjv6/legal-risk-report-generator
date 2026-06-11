@@ -133,6 +133,13 @@ def get_risk_level(risk_score):
 
     return "Low"
 
+def get_base_file_name(file_name):
+    return (
+        file_name
+        .replace(".txt", "")
+        .replace(".docx", "")
+        .replace(" ", "_")
+    )
 st.sidebar.title("Legal Risk Report Generator")
 st.sidebar.markdown(
     """
@@ -257,21 +264,28 @@ if batch_results:
             st.markdown("### Individual Report")
             st.markdown(result["report"])
 
+            base_file_name = get_base_file_name(result["file_name"])
+
+            base_file_name = get_base_file_name(result["file_name"])
+
             st.download_button(
-                label=f"Download {result['file_name']} report",
+                label=f"Download {result['file_name']} report as Markdown",
                 data=result["report"],
-                file_name=f"{result['file_name'].replace('.txt', '')}_report.md",
+                file_name=f"{base_file_name}_report.md",
                 mime="text/markdown"
             )
 
-    docx_report = convert_markdown_to_docx_bytes(result["report"])
+            docx_report = convert_markdown_to_docx_bytes(result["report"])
 
-    st.download_button(
-        label=f"Download {result['file_name']} report as DOCX",
-        data=docx_report,
-        file_name=f"{result['file_name'].replace('.txt', '').replace('.docx', '')}_report.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-)
+            docx_report = convert_markdown_to_docx_bytes(result["report"])
+
+            st.download_button(
+                label=f"Download {result['file_name']} report as DOCX",
+                data=docx_report,
+                file_name=f"{base_file_name}_report.docx",
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            )
+
     st.subheader("4. Portfolio Summary")
 
     batch_summary = generate_batch_summary_report(batch_results)
@@ -279,7 +293,7 @@ if batch_results:
     st.markdown(batch_summary)
 
     st.download_button(
-        label="Download batch summary report",
+        label="Download batch summary report as Markdown",
         data=batch_summary,
         file_name="batch_summary_report.md",
         mime="text/markdown"
