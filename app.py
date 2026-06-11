@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 from docx import Document
+from export import convert_markdown_to_docx_bytes
 
 from data import document
 from file_reader import read_contract_file, get_text_files, read_docx_file
@@ -137,7 +138,7 @@ st.sidebar.markdown(
     """
     **Prototype type:** LegalTech / Legal Ops  
     **Focus:** IP, confidentiality, AI/data governance and R&D risk review  
-    **Version:** v3.3 + DOCX Input Support
+    **Version:** v3.4 + DOCX Export Support
     """
 )
 
@@ -263,6 +264,14 @@ if batch_results:
                 mime="text/markdown"
             )
 
+    docx_report = convert_markdown_to_docx_bytes(result["report"])
+
+    st.download_button(
+        label=f"Download {result['file_name']} report as DOCX",
+        data=docx_report,
+        file_name=f"{result['file_name'].replace('.txt', '').replace('.docx', '')}_report.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+)
     st.subheader("4. Portfolio Summary")
 
     batch_summary = generate_batch_summary_report(batch_results)
@@ -274,4 +283,13 @@ if batch_results:
         data=batch_summary,
         file_name="batch_summary_report.md",
         mime="text/markdown"
+    )
+
+    batch_docx_report = convert_markdown_to_docx_bytes(batch_summary)
+
+    st.download_button(
+        label="Download batch summary report as DOCX",
+        data=batch_docx_report,
+        file_name="batch_summary_report.docx",
+        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     )
