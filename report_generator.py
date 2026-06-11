@@ -6,7 +6,8 @@ from risk_engine import (
     generate_category_insights,
     generate_portfolio_action_plan,
     generate_contract_playbook_recommendations,
-    get_clause_recommendation_for_risk
+    get_clause_recommendation_for_risk,
+    generate_clause_recommendation_summary
 )
 
 
@@ -151,6 +152,14 @@ def generate_batch_summary_report(batch_results):
         report += f"- {recommendation}\n"
 
     report += "\n"
+
+    clause_recommendation_summary = generate_clause_recommendation_summary(global_category_counts)
+
+    report += "## Clause Recommendation Summary\n\n"
+
+    for item in clause_recommendation_summary:
+        report += f"### {item['category']}\n\n"
+        report += f"{item['recommendation']}\n\n"
 
     portfolio_action_plan = generate_portfolio_action_plan(batch_results)
 

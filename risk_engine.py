@@ -182,3 +182,50 @@ def get_clause_recommendation_for_risk(risk):
         risk["name"],
         "No standard clause recommendation is currently available for this risk."
     )
+
+def generate_clause_recommendation_summary(category_counts):
+    recommendations = []
+
+    if category_counts.get("Intellectual Property", 0) > 0:
+        recommendations.append({
+            "category": "Intellectual Property",
+            "recommendation": (
+                "Standardize foreground IP ownership clauses across R&D, supplier and collaboration templates, "
+                "including ownership of improvements, derivative works, software outputs, model adaptations and jointly developed results."
+            )
+        })
+
+    if category_counts.get("Confidentiality", 0) > 0:
+        recommendations.append({
+            "category": "Confidentiality",
+            "recommendation": (
+                "Add confidentiality survival language to relevant templates, specifying post-termination obligations "
+                "and the duration of confidentiality protection."
+            )
+        })
+
+    if category_counts.get("AI / Data Governance", 0) > 0:
+        recommendations.append({
+            "category": "AI / Data Governance",
+            "recommendation": (
+                "Add AI training-use and secondary-use restrictions to agreements involving technical data, datasets, "
+                "software logs, performance feedback or R&D outputs."
+            )
+        })
+
+    if category_counts.get("R&D Governance", 0) > 0:
+        recommendations.append({
+            "category": "R&D Governance",
+            "recommendation": (
+                "Standardize publication approval and research disclosure clauses before external communication, "
+                "case studies or publication of project results."
+            )
+        })
+
+    if not recommendations:
+        recommendations.append({
+            "category": "General",
+            "recommendation": "No portfolio-level clause recommendation was generated because no relevant risk category was detected."
+        })
+
+    return recommendations
