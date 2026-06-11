@@ -156,3 +156,29 @@ def generate_contract_playbook_recommendations(category_counts):
         )
 
     return recommendations
+
+def get_clause_recommendation_for_risk(risk):
+    clause_recommendations = {
+        "Potential ambiguity in foreground IP ownership": (
+            "Include a clause clearly defining ownership of foreground IP, jointly developed results, "
+            "derivative works, improvements, software outputs and model adaptations created during the project."
+        ),
+        "Potential missing confidentiality survival period": (
+            "Include a confidentiality survival clause stating that confidentiality obligations remain in force "
+            "after termination or expiration of the agreement for a defined period, or for as long as the information remains confidential."
+        ),
+        "Potential unrestricted AI training use": (
+            "Include an AI/data-use restriction clause prohibiting the use of confidential information, technical data, "
+            "software logs, datasets, R&D outputs or performance feedback for AI training, model improvement or secondary use "
+            "without prior written consent."
+        ),
+        "Potential missing publication approval clause": (
+            "Include a publication approval clause requiring prior written review and approval before any publication, "
+            "case study, public disclosure, presentation or external communication of project results."
+        )
+    }
+
+    return clause_recommendations.get(
+        risk["name"],
+        "No standard clause recommendation is currently available for this risk."
+    )

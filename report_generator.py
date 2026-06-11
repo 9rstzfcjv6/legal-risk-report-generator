@@ -5,7 +5,8 @@ from risk_engine import (
     get_overall_assessment,
     generate_category_insights,
     generate_portfolio_action_plan,
-    generate_contract_playbook_recommendations
+    generate_contract_playbook_recommendations,
+    get_clause_recommendation_for_risk
 )
 
 
@@ -47,12 +48,14 @@ def generate_markdown_report(document, risks):
 
     for risk in risks:
         action = get_action_for_risk(risk)
+        clause_recommendation = get_clause_recommendation_for_risk(risk)
 
         report += f"### {risk['name']}\n\n"
         report += f"- **Category:** {risk['category']}\n"
         report += f"- **Level:** {risk['level']}\n"
         report += f"- **Recommendation:** {risk['recommendation']}\n"
         report += f"- **Action:** {action}\n"
+        report += f"- **Clause Recommendation:** {clause_recommendation}\n"
         report += f"- **Owner:** {risk['owner']}\n"
         report += f"- **Deadline:** {risk['deadline']}\n"
         report += f"- **Priority:** {risk['priority']}\n"
