@@ -160,7 +160,17 @@ st.sidebar.markdown(
     """
 )
 
+st.sidebar.markdown("---")
+
+st.sidebar.warning(
+    "Public demo only. Do not upload confidential, personal or sensitive documents."
+)
+
 st.title("Legal Risk Report Generator")
+st.warning(
+    "Do not upload confidential, personal, sensitive or proprietary contract data. "
+    "This public demo is for educational and portfolio purposes only and does not provide legal advice."
+)
 st.caption("Rule-based LegalTech prototype for contract risk analysis, IP governance and AI/data risk review.")
 
 st.markdown(
