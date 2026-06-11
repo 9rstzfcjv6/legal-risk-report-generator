@@ -57,10 +57,12 @@ def generate_markdown_report(document, risks):
         report += f"- **Recommendation:** {risk['recommendation']}\n"
         report += f"- **Action:** {action}\n"
         report += f"- **Clause Recommendation:** {clause_recommendation}\n"
+        report += f"- **Evidence Snippet:** {risk.get('evidence', 'No evidence snippet available.')}\n"
         report += f"- **Owner:** {risk['owner']}\n"
         report += f"- **Deadline:** {risk['deadline']}\n"
         report += f"- **Priority:** {risk['priority']}\n"
         report += f"- **Status:** {risk['status']}\n\n"
+        
 
     report += "## Legal Disclaimer\n\n"
     report += (

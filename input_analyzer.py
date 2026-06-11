@@ -1,3 +1,18 @@
+def find_evidence_snippet(contract_text, keywords):
+    paragraphs = contract_text.split("\n")
+
+    for keyword in keywords:
+        for paragraph in paragraphs:
+            clean_paragraph = paragraph.strip()
+
+            if not clean_paragraph:
+                continue
+
+            if keyword.lower() in clean_paragraph.lower():
+                return clean_paragraph
+
+    return "No specific evidence snippet identified."
+
 def analyze_contract_text(contract_text):
     detected_risks = []
 
@@ -12,8 +27,13 @@ def analyze_contract_text(contract_text):
             "owner": "IP / Legal Team",
             "deadline": "Before signature",
             "priority": "Urgent",
-            "status": "To review"
+            "status": "To review",
+            "evidence": find_evidence_snippet(
+                contract_text,
+                ["foreground IP", "jointly developed", "derivative works", "improvements"]
+            ),
         })
+    
 
     if "confidential" in text and "termination" not in text:
         detected_risks.append({
@@ -24,7 +44,11 @@ def analyze_contract_text(contract_text):
             "owner": "Legal Team",
             "deadline": "Before negotiation closing",
             "priority": "Important",
-            "status": "To clarify"
+            "status": "To clarify",
+            "evidence": find_evidence_snippet(
+                contract_text,
+                ["confidentiality", "termination", "expiration", "survive"]
+            ),
         })
 
     if "ai training" in text or "model training" in text or "machine learning" in text:
@@ -36,7 +60,11 @@ def analyze_contract_text(contract_text):
             "owner": "Legal / Data Governance Team",
             "deadline": "Before sharing technical data",
             "priority": "Urgent",
-            "status": "To review"
+            "status": "To review",
+            "evidence": find_evidence_snippet(
+                contract_text,
+                ["software logs", "datasets", "AI training", "model training", "secondary use", "machine learning"]
+            ),
         })
 
     if ("publication" in text or "publish" in text or "disclose" in text or "disclosure" in text) and "approval" not in text:
@@ -48,7 +76,11 @@ def analyze_contract_text(contract_text):
             "owner": "R&D / Legal Team",
             "deadline": "Before project launch",
             "priority": "Important",
-            "status": "To clarify"
+            "status": "To clarify",
+            "evidence": find_evidence_snippet(
+                contract_text,
+                ["publication", "case studies", "disclosure", "research results", "public"]
+            ),
         })
 
     return detected_risks
