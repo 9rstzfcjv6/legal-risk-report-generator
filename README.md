@@ -1,5 +1,13 @@
 # Legal Risk Report Generator
 
+## Live Demo
+
+Try the deployed Streamlit app here:
+
+https://legal-risk-report-generator-mgbk6upqiuska44x5usgtp.streamlit.app/
+
+> Public demo only. Do not upload confidential, personal, sensitive or proprietary contract data.
+
 ## Overview
 
 Legal Risk Report Generator is a rule-based LegalTech prototype designed to analyze contract text files and identify recurring legal risks related to intellectual property, confidentiality, AI/data governance and R&D collaboration.
