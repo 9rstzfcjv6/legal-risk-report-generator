@@ -5,7 +5,7 @@ from export import convert_markdown_to_docx_bytes
 
 from data import document
 from file_reader import read_contract_file, get_text_files, read_docx_file
-from input_analyzer import analyze_contract_text
+from input_analyzer import analyze_contract_text, check_clause_presence
 from report_generator import generate_markdown_report, generate_batch_summary_report
 from risk_engine import (
     calculate_risk_counts,
@@ -29,13 +29,14 @@ def analyze_selected_contracts(selected_files, input_folder):
 
         contract_text = read_contract_file(input_path)
         risks = analyze_contract_text(contract_text)
+        clause_checklist = check_clause_presence(contract_text)
 
         high_count, medium_count, low_count = calculate_risk_counts(risks)
         risk_score = calculate_risk_score(risks)
         overall_assessment = get_overall_assessment(high_count, medium_count)
         category_counts = calculate_category_counts(risks)
 
-        report = generate_markdown_report(document, risks)
+        report = generate_markdown_report(document, risks, clause_checklist)
 
         batch_results.append({
             "file_name": input_file,
@@ -46,21 +47,23 @@ def analyze_selected_contracts(selected_files, input_folder):
             "risk_score": risk_score,
             "overall_assessment": overall_assessment,
             "category_counts": category_counts,
+            "clause_checklist": clause_checklist,
             "risks": risks,
-            "report": report
+            "report": report,
         })
 
     return batch_results
 
 def analyze_uploaded_contract(file_name, contract_text):
     risks = analyze_contract_text(contract_text)
+    clause_checklist = check_clause_presence(contract_text)
 
     high_count, medium_count, low_count = calculate_risk_counts(risks)
     risk_score = calculate_risk_score(risks)
     overall_assessment = get_overall_assessment(high_count, medium_count)
     category_counts = calculate_category_counts(risks)
 
-    report = generate_markdown_report(document, risks)
+    report = generate_markdown_report(document, risks, clause_checklist)
 
     return {
         "file_name": file_name,
@@ -71,6 +74,7 @@ def analyze_uploaded_contract(file_name, contract_text):
         "risk_score": risk_score,
         "overall_assessment": overall_assessment,
         "category_counts": category_counts,
+        "clause_checklist": clause_checklist,
         "risks": risks,
         "report": report
     }
@@ -270,6 +274,11 @@ if batch_results:
             st.write(f"Medium risks: **{result['medium_count']}**")
             st.write(f"Low risks: **{result['low_count']}**")
             st.write(f"Overall assessment: **{result['overall_assessment']}**")
+            st.markdown("### Missing Clause Checklist")
+
+            for clause, is_present in result["clause_checklist"].items():
+                status = "Present" if is_present else "Missing"
+                st.write(f"- **{clause}:** {status}")
 
             st.markdown("### Individual Report")
             st.markdown(result["report"])

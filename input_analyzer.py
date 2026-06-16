@@ -13,6 +13,42 @@ def find_evidence_snippet(contract_text, keywords):
 
     return "No specific evidence snippet identified."
 
+def check_clause_presence(contract_text):
+    lower_text = contract_text.lower()
+
+    checklist = {
+        "Foreground IP ownership": any(
+            keyword in lower_text
+            for keyword in ["foreground ip", "project-generated ip", "jointly developed", "derivative works"]
+        ),
+        "Background IP reservation": any(
+            keyword in lower_text
+            for keyword in ["background ip", "pre-existing intellectual property", "pre-existing ip"]
+        ),
+        "Confidentiality survival": any(
+            keyword in lower_text
+            for keyword in ["survive termination", "survive expiration", "confidentiality obligations shall survive", "post-termination"]
+        ),
+        "AI / data use restriction": any(
+            keyword in lower_text
+            for keyword in ["ai training", "model training", "machine learning", "secondary use", "fine-tuning", "training corpus"]
+        ),
+        "Publication approval": any(
+            keyword in lower_text
+            for keyword in ["publication approval", "prior written approval", "publish", "case study", "public disclosure"]
+        ),
+        "Audit / records": any(
+            keyword in lower_text
+            for keyword in ["audit", "records", "development notes", "version history"]
+        ),
+        "Third-party IP warranty": any(
+            keyword in lower_text
+            for keyword in ["third-party rights", "third party rights", "infringe", "infringement"]
+        )
+    }
+
+    return checklist
+
 def analyze_contract_text(contract_text):
     detected_risks = []
 

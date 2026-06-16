@@ -11,7 +11,7 @@ from risk_engine import (
 )
 
 
-def generate_markdown_report(document, risks):
+def generate_markdown_report(document, risks, clause_checklist=None):
     high_count, medium_count, low_count = calculate_risk_counts(risks)
     risk_score = calculate_risk_score(risks)
     overall_assessment = get_overall_assessment(high_count, medium_count)
@@ -34,6 +34,17 @@ def generate_markdown_report(document, risks):
     report += "| Risk | Category | Level | Owner | Deadline | Priority | Status |\n"
     report += "|---|---|---|---|---|---|---|\n"
 
+    if clause_checklist:
+        report += "## Missing Clause Checklist\n\n"
+        report += "| Clause | Status |\n"
+        report += "|---|---|\n"
+
+        for clause, is_present in clause_checklist.items():
+            status = "Present" if is_present else "Missing"
+            report += f"| {clause} | {status} |\n"
+
+        report += "\n"
+        
     for risk in risks:
         report += (
             f"| {risk['name']} "
@@ -202,6 +213,7 @@ def generate_batch_summary_report(batch_results):
 
     report += "\n## Contracts Requiring Legal Escalation\n\n"
 
+
     if escalation_contracts:
         for contract in escalation_contracts:
             report += f"- {contract}\n"
@@ -213,5 +225,5 @@ def generate_batch_summary_report(batch_results):
         "This batch summary helps legal, IP and R&D teams prioritize contract review workload, "
         "identify high-risk agreements and allocate review resources more efficiently.\n"
     )
-    
+
     return report
