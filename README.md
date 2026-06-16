@@ -1,5 +1,7 @@
 # Legal Risk Report Generator
 
+# Legal Risk Report Generator
+
 ## Live Demo
 
 Try the deployed Streamlit app here:
@@ -7,6 +9,8 @@ Try the deployed Streamlit app here:
 https://legal-risk-report-generator-mgbk6upqiuska44x5usgtp.streamlit.app/
 
 > Public demo only. Do not upload confidential, personal, sensitive or proprietary contract data.
+
+## Overview
 
 ## Overview
 
