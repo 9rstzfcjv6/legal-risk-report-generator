@@ -213,5 +213,5 @@ def generate_batch_summary_report(batch_results):
         "This batch summary helps legal, IP and R&D teams prioritize contract review workload, "
         "identify high-risk agreements and allocate review resources more efficiently.\n"
     )
-
+    
     return report
